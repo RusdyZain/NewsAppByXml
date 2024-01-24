@@ -1,12 +1,14 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
+    id ("kotlin-android")
+    id ("kotlin-kapt")
+    id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     namespace = "com.example.newsappbyxml"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.newsappbyxml"
@@ -27,6 +29,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding =  true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -51,7 +58,7 @@ dependencies {
 
     // Room
     implementation ("androidx.room:room-runtime:2.6.1")
-    ksp ("androidx.room:room-compiler:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
 
     // Kotlin Extensions and Coroutines support for Room
     implementation ("androidx.room:room-ktx:2.6.1")
@@ -74,6 +81,7 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.6")
 
     // Glide
-    implementation ("com.github.bumptech.glide:glide:4.13.2")
-    ksp ("com.github.bumptech.glide:ksp:4.11.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.15.1")
+
 }
