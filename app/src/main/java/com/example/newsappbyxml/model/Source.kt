@@ -1,4 +1,4 @@
-package com.example.newsappbyxml
+package com.example.newsappbyxml.model
 
 data class Source(
     val id: String,

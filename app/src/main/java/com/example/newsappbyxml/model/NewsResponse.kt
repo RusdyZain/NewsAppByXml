@@ -1,4 +1,4 @@
-package com.example.newsappbyxml
+package com.example.newsappbyxml.model
 
 data class NewsResponse(
     val articles: List<Article>,
