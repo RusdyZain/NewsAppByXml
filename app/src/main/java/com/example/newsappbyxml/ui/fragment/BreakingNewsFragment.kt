@@ -61,7 +61,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     }
 
     private fun setupRecyclerView() {
-        val newsAdapter = NewsAdapter()
+        newsAdapter = NewsAdapter()
         binding.rvBreakingNews.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
