@@ -1,15 +1,14 @@
-package com.example.newsappbyxml
+package com.example.newsappbyxml.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.newsappbyxml.R
 import com.example.newsappbyxml.databinding.ActivityMainBinding
 import com.example.newsappbyxml.db.ArticleDatabase
 import com.example.newsappbyxml.repository.NewsRepository
-import com.example.newsappbyxml.ui.NewsViewModel
-import com.example.newsappbyxml.ui.NewsViewModelProviderFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(application, newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory)[NewsViewModel::class.java]
         binding.bottomNavigationView.setupWithNavController(navController)
     }

@@ -1,18 +1,18 @@
 package com.example.newsappbyxml.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsappbyxml.MainActivity
 import com.example.newsappbyxml.R
 import com.example.newsappbyxml.adapters.NewsAdapter
 import com.example.newsappbyxml.databinding.FragmentSearchNewsBinding
+import com.example.newsappbyxml.ui.MainActivity
 import com.example.newsappbyxml.ui.NewsViewModel
 import com.example.newsappbyxml.util.Constants
 import com.example.newsappbyxml.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
@@ -78,7 +78,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(tag, "An error occured: $message")
+                        Toast.makeText(activity, "An error occured: $message", Toast.LENGTH_LONG).show()
                     }
                 }
                 is Resource.Loading -> {

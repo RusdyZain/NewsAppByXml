@@ -1,17 +1,17 @@
 package com.example.newsappbyxml.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsappbyxml.MainActivity
 import com.example.newsappbyxml.R
 import com.example.newsappbyxml.adapters.NewsAdapter
 import com.example.newsappbyxml.databinding.FragmentBreakingNewsBinding
+import com.example.newsappbyxml.ui.MainActivity
 import com.example.newsappbyxml.ui.NewsViewModel
 import com.example.newsappbyxml.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.newsappbyxml.util.Resource
@@ -60,7 +60,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(tag, "An error occured: $message")
+                        Toast.makeText(activity, "An error occured: $message", Toast.LENGTH_LONG).show()
                     }
                 }
 
@@ -101,7 +101,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
             if(shouldPaginate) {
-                viewModel.getBreakingNews("us")
+                viewModel.getBreakingNews("id")
                 isScrolling = false
             }
         }

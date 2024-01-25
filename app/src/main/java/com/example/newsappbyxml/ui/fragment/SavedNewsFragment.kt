@@ -7,10 +7,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsappbyxml.MainActivity
 import com.example.newsappbyxml.R
 import com.example.newsappbyxml.adapters.NewsAdapter
 import com.example.newsappbyxml.databinding.FragmentSavedNewsBinding
+import com.example.newsappbyxml.ui.MainActivity
 import com.example.newsappbyxml.ui.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
