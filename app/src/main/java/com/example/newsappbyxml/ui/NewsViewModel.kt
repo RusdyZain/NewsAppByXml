@@ -22,6 +22,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
+@Suppress("DEPRECATION")
 class NewsViewModel(
     app: Application,
     private val newsRepository: NewsRepository
