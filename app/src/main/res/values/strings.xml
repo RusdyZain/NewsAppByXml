@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">NewsApp</string>
-    <string name="breaking_news">Breaking News</string>
-    <string name="saved_news">Saved News</string>
-    <string name="search_news">Search News</string>
+    <string name="today">Today</string>
+    <string name="favorite">Favorite</string>
+    <string name="search_news">Search</string>
     <string name="search">Search...</string>
     <string name="source">SOURCE</string>
     <string name="title">TITLE</string>
@@ -10,4 +10,11 @@
     <string name="published_at">PUBLISHED AT</string>
     <string name="navigation_drawer_open">Open Drawer</string>
     <string name="navigation_drawer_close">Close Drawer</string>
+    <string name="top_news">Top News</string>
+    <string name="title_top_news">Title Top News</string>
+    <string name="description_top_news">Description Top News</string>
+    <string name="news_name">News Name</string>
+    <string name="berita_terkini">Berita Terkini</string>
+    <string name="breaking_news_title">Breaking News</string>
+    <string name="logo_breaking_news">Logo Breaking News</string>
 </resources>

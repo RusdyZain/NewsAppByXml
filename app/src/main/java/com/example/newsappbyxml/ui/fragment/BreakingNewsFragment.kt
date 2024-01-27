@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappbyxml.R
+import com.example.newsappbyxml.adapters.GlideApp
 import com.example.newsappbyxml.adapters.NewsAdapter
 import com.example.newsappbyxml.databinding.FragmentBreakingNewsBinding
 import com.example.newsappbyxml.ui.MainActivity
@@ -23,8 +24,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
     private var _binding: FragmentBreakingNewsBinding? = null
     private val binding get() = _binding!!
-
-    private val tag = "BreakingNewsFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentBreakingNewsBinding.bind(view)
@@ -53,6 +52,24 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                         isLastPage = viewModel.breakingNewsPage == totalPages
                         if(isLastPage){
                             binding.rvBreakingNews.setPadding(0,0,0,0)
+                        }
+
+                        val firstArticle = newsResponse.articles.firstOrNull()
+                        firstArticle?.let { article ->
+                            binding.newsName.text = article.source?.name
+                            binding.titleHeadLine.text = article.title
+                            binding.descHeadline.text = article.description
+                            GlideApp.with(requireView()).load(article.urlToImage).into(binding.imageHeadline)
+
+                            binding.root.setOnClickListener {
+                                val bundle = Bundle().apply {
+                                    putSerializable("article", article)
+                                }
+                                findNavController().navigate(
+                                    R.id.action_breakingNewsFragment_to_articleFragment,
+                                    bundle
+                                )
+                            }
                         }
                     }
                 }
