@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappbyxml.databinding.ItemArticlePreviewBinding
 import com.example.newsappbyxml.model.Article
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
@@ -44,7 +47,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
                 tvSource.text = article.source?.name
                 tvTitle.text = article.title
                 tvDescription.text = article.description
-                tvPublishedAt.text = article.publishedAt
+                tvPublishedAt.text = article.publishedAt.convertToReadableDate()
 
                 root.setOnClickListener {
                     onItemClickListener?.let { it(article) }
@@ -66,5 +69,24 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     fun setOnItemClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
+    }
+
+
+    private fun String?.convertToReadableDate(): String {
+        if (this.isNullOrEmpty()) {
+            return ""
+        }
+
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
+
+        try {
+            val date = inputFormat.parse(this)
+            return outputFormat.format(date)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
+        return ""
     }
 }

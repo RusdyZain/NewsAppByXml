@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/topNews"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="500dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/breaking_news_title"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:layout_weight="1"
@@ -54,15 +54,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/news_name"
-                android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginVertical="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginHorizontal="10dp"
-                app:layout_constraintBottom_toTopOf="@id/imageHeadline"
+                app:layout_constraintTop_toBottomOf="@id/imageHeadline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/logoAndNewsLayout" />
+                />
 
             <ImageView
                 android:id="@+id/imageHeadline"
@@ -73,7 +73,7 @@
                 android:scaleType="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/newsName" />
+                app:layout_constraintTop_toBottomOf="@id/logoAndNewsLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,7 +94,8 @@
                 android:contentDescription="@string/title_top_news"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                />
 
             <TextView
                 android:id="@+id/descHeadline"
@@ -112,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:paddingBottom="50dp"
+        android:paddingBottom="90dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
