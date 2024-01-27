@@ -36,18 +36,30 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
         val binding = holder.binding
+        if (isArticleRemoved(article)) {
+           return
+        } else {
+            with(binding) {
+                GlideApp.with(ivArticleImage).load(article.urlToImage).into(ivArticleImage)
+                tvSource.text = article.source?.name
+                tvTitle.text = article.title
+                tvDescription.text = article.description
+                tvPublishedAt.text = article.publishedAt
 
-        with(binding) {
-            GlideApp.with(ivArticleImage).load(article.urlToImage).into(ivArticleImage)
-            tvSource.text = article.source?.name
-            tvTitle.text = article.title
-            tvDescription.text = article.description
-            tvPublishedAt.text = article.publishedAt
-
-            root.setOnClickListener {
-                onItemClickListener?.let { it(article) }
+                root.setOnClickListener {
+                    onItemClickListener?.let { it(article) }
+                }
             }
         }
+    }
+
+    private fun isArticleRemoved(article: Article): Boolean {
+        return article.title == "[Removed]" || article.description == "[Removed]" || article.content == "[Removed]"
+    }
+
+    fun submitFilteredList(filteredList: List<Article>) {
+        val nonRemovedList = filteredList.filter { !isArticleRemoved(it) }
+        differ.submitList(nonRemovedList)
     }
 
     private var onItemClickListener: ((Article) -> Unit)? = null
