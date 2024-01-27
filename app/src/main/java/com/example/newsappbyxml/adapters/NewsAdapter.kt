@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsappbyxml.R
 import com.example.newsappbyxml.databinding.ItemArticlePreviewBinding
 import com.example.newsappbyxml.model.Article
 import java.text.ParseException
@@ -43,7 +44,11 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
            return
         } else {
             with(binding) {
-                GlideApp.with(ivArticleImage).load(article.urlToImage).into(ivArticleImage)
+                if (article.urlToImage != null) {
+                    GlideApp.with(ivArticleImage).load(article.urlToImage).into(ivArticleImage)
+                } else {
+                    GlideApp.with(ivArticleImage).load(R.drawable.news_null).into(ivArticleImage)
+                }
                 tvSource.text = article.source?.name
                 tvTitle.text = article.title
                 tvDescription.text = article.description

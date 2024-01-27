@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -51,18 +52,17 @@
 
             <TextView
                 android:id="@+id/newsName"
-                android:layout_width="0dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/news_name"
                 android:textColor="@color/blue"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_marginHorizontal="10dp"
                 app:layout_constraintTop_toBottomOf="@id/imageHeadline"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                />5
 
             <ImageView
                 android:id="@+id/imageHeadline"
@@ -74,6 +74,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/logoAndNewsLayout" />
+
+            <TextView
+                android:id="@+id/tvPublishedAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="@string/published_at"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageHeadline"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

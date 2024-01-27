@@ -16,6 +16,9 @@ import com.example.newsappbyxml.ui.MainActivity
 import com.example.newsappbyxml.ui.NewsViewModel
 import com.example.newsappbyxml.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.newsappbyxml.util.Resource
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
@@ -59,7 +62,12 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                             binding.newsName.text = article.source?.name
                             binding.titleHeadLine.text = article.title
                             binding.descHeadline.text = article.description
-                            GlideApp.with(requireView()).load(article.urlToImage).into(binding.imageHeadline)
+                            binding.tvPublishedAt.text = article.publishedAt.convertToReadableDate()
+                            if (article.urlToImage != null) {
+                                GlideApp.with(requireView()).load(article.urlToImage).into(binding.imageHeadline)
+                            } else {
+                                GlideApp.with(requireView()).load(R.drawable.news_null).into(binding.imageHeadline)
+                            }
 
                             binding.root.setOnClickListener {
                                 val bundle = Bundle().apply {
@@ -86,6 +94,24 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 }
             }
         }
+    }
+
+    private fun String?.convertToReadableDate(): String {
+        if (this.isNullOrEmpty()) {
+            return ""
+        }
+
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
+
+        try {
+            val date = inputFormat.parse(this)
+            return outputFormat.format(date)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
+        return ""
     }
 
     private fun hideProgressBar() {
