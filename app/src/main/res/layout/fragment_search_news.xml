@@ -49,6 +49,7 @@
         android:background="@drawable/rounded_corners"
         android:drawableStart="@drawable/searchicon"
         android:layout_marginHorizontal="10dp"
+        android:textColor="@color/black"
         />
 
     <androidx.recyclerview.widget.RecyclerView
