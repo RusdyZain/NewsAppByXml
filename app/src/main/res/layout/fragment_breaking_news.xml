@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/topNews"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="530dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +90,6 @@
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
         <LinearLayout
